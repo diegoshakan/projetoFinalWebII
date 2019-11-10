@@ -9,6 +9,13 @@ App de criação de Tarefas para o Desafio Insight.
 * Gems
     - devise
     - pg (Postgresql)
+    - jsonapi-resource
+
+* Rodando o Sistema
+    Para rodar a aplicação localmente, após o clone, você precisará:
+    - $ bundle install;
+    - $ rails db:create db:migrate db:seed
+    - $ rails s
 
 * O sistema permite criar, editar e remover tarefas do usuário que estiver autenticado;
     - Utilizando a gem 'devise', para registro e autenticação de usuário, é possível você se cadastrar para ter acesso a sua dashboard de tarefas, em que você poderá adicionar, editar e remover suas tarefas.
@@ -19,4 +26,4 @@ App de criação de Tarefas para o Desafio Insight.
     - Também encontrará o relacionamento da tarefa com o usuário criado pelo 'devise'.
 
 * Teste
-    - Testes realizados no modelo BDD com o 'rspec'.
+    - Testes realizados no modelo BDD com o 'rspec'. Porém, incompletos ainda.
