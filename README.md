@@ -11,7 +11,7 @@ App de criação de Tarefas para o Desafio Insight.
     - pg (Postgresql)
     - jsonapi-resource
 
-* Rodando o Sistema
+* Rodando o Sistema:
     Para rodar a aplicação localmente, após o clone, você precisará:
     - $ bundle install;
     - $ rails db:create db:migrate db:seed
