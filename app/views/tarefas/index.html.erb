@@ -8,11 +8,15 @@
 
   <div class="row">
     <% @tarefas.each do |tarefa| %>
+    <% if tarefa.user == current_user || current_user.admin? %>
       <div class="col-sm-3">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title"><%= tarefa.title %></h5>
+              <strong>Descrição</strong>
               <p class="card-text"><%= tarefa.body.truncate_words(3) %></p>
+              <strong>Usuário</strong>
+              <p class="card-text"><%= tarefa.user.username %></p>
               <%= link_to 'Ler', tarefa, class: 'btn btn-primary' %>
               <%= link_to 'Editar', edit_tarefa_path(tarefa), class: 'btn btn-warning' %>
               <%= link_to 'Exluir', tarefa, method: :delete, class: 'btn btn-danger' %>
@@ -20,6 +24,7 @@
         </div>
       </div>
     <% end %>
+  <%end%>
   </div>
   
 </div>

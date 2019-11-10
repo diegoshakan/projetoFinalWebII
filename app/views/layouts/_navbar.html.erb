@@ -1,28 +1,35 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-primary">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        <button type="button" class="btn btn-outline-primary btn-sm"><a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a></button>
+        
       </li>
-      <li class="nav-item">
-        <%= link_to 'Registre-se', new_user_registration_path, class:"nav-link" %>
-      </li>
+      
       <% if user_signed_in? %>
+
       <li class="nav-item">
-      <%= link_to 'Ver Tarefas', tarefas_path, class:"nav-link" %>
+      <button type="button" class="btn btn-outline-warning btn-sm"><%= link_to 'Ver Tarefas', tarefas_path, class:"nav-link" %></button>
+      
       <li class="nav-item">
-      <li class="nav-item">
-      <%= link_to 'Sair', destroy_user_session_path, method: :delete, class:"nav-link" %>  
+      <button type="button" class="btn btn-outline-danger btn-sm"><%= link_to 'Sair', destroy_user_session_path, method: :delete, class:"nav-link" %>  </button>
+      
+      </li>
       <li class="nav-item">
       
-        <p class="nav-link" style="position: relative; left: 100%"><%= current_user.username %></p>
+        <h5 class="nav-link" style="position: relative; left: 0%"> Olá <%= current_user.username %></h5>
       </li>
+      <% else %> 
+      <li class="nav-item">
+        <button type="button" class="btn btn-outline-info btn-sm"><%= link_to 'Registre-se', new_user_registration_path, class: "nav-link" %></button>
       </li>
-      <% else %>      
-      <%= link_to 'Entrar', new_user_session_path , class:"nav-link" %><br>
+
+      <li class="nav-item">   
+      <button type="button" class="btn btn-outline-success btn-sm"><%= link_to 'Entrar', new_user_session_path , class:"nav-link" %></button>
+      </li>
       <% end %>
       
     </ul>
