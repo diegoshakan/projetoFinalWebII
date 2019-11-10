@@ -4,41 +4,29 @@
 <center> 
 <h1>Minhas Tarefas</h1>
 
-<div class="col-md-8" >
-<table>
-  <thead>
-    <tr>
-      <th>Título</th>
-      <th>Descrição</th>
-      <th>Data</th>
-      <th>Usuário</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container" >
 
-  <tbody>
-    
+  <div class="row">
     <% @tarefas.each do |tarefa| %>
-      <% if tarefa.user == current_user%>
-        <tr>
-          <td><%= tarefa.title %></td>
-          <td><%= tarefa.body.truncate_words(3) %></td>
-          <td><%= tarefa.date %></td>
-          <td><%= tarefa.user.username %></td>
-          <td><%= link_to 'Ler', tarefa %></td>
-          <td><%= link_to 'Editar', edit_tarefa_path(tarefa) %></td>
-          <td><%= link_to 'Deletar', tarefa, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
-        </tr>
-      <% end %>
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= tarefa.title %></h5>
+              <p class="card-text"><%= tarefa.body.truncate_words(3) %></p>
+              <%= link_to 'Ler', tarefa, class: 'btn btn-primary' %>
+              <%= link_to 'Editar', edit_tarefa_path(tarefa), class: 'btn btn-warning' %>
+              <%= link_to 'Exluir', tarefa, method: :delete, class: 'btn btn-danger' %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-</div> 
-</center>
+  </div>
+  
+</div>
 
 <br>
 <div class="col-md-4">
       <p>
-        <%= link_to 'Adicione Nova Tarefa', new_tarefa_path %><br>
+        <%= link_to 'Nova Tarefa', new_tarefa_path, class: 'btn btn-success btn-lg' %><br>
       </p>
 </div>
