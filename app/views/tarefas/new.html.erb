@@ -1,5 +1,7 @@
-<h1>New Tarefa</h1>
+<center>
+<h1>Nova Tarefa</h1>
 
-<%= render 'form', tarefa: @tarefa %>
+<%= render 'form', tarefa: @tarefa, name: 'Nova Tarefa' %>
 
-<%= link_to 'Back', tarefas_path %>
+<%= link_to 'Voltar', tarefas_path, class:'btn btn-danger' %>
+</center>
