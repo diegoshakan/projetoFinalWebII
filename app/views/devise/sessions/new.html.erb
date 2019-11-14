@@ -16,13 +16,13 @@
 
   <% if devise_mapping.rememberable? %>
     <div class="field">
-      <%= f.check_box :remember_me, class: "checkbox mb-3" %>
-      <%= f.label :remember_me, type: "checkbox", value: "Lembrar-me" %>
+      <%= f.check_box :remember_me, class: "checkbox mb-3", class: "form-check-input" %>
+      <%= f.label "Lembrar-me", type: "checkbox", class:"form-check-label" %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in", class: 'btn btn-lg btn-outline-primary btn-block' %>
+    <%= f.submit "Entrar", class: 'btn btn-lg btn-outline-primary btn-block' %>
   </div>
 <% end %>
 </div>
