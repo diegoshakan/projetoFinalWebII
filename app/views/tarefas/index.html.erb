@@ -1,32 +1,55 @@
 <center> 
-<h1>Minhas Tarefas</h1>
+  <h1>Minhas Tarefas</h1>
+  
+  <div class="col-md-4">
+    <p>
+      <%= link_to 'Nova Tarefa', new_tarefa_path, class: 'btn btn-success btn-lg' %><br>
+    </p>
+  </div>
 
-<div class="container" >
-
-  <div class="row">
-    <% @tarefas.each do |tarefa| %>
-      <div class="col-md-6 col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title"><%= tarefa.title %></h5>
+  <div class="container" >
+    <div class="row">
+      <% @tarefas.each do |tarefa| %>
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= tarefa.title %></h5>
               <strong>Descrição</strong>
               <p class="card-text"><%= tarefa.body.truncate_words(3) %></p>
               <strong>Usuário</strong>
               <p class="card-text"><%= tarefa.user.username %></p>
+              <%= link_to 'Concluída', done_tarefa_url(tarefa), class: 'btn btn-success' %>
               <%= link_to 'Ler', tarefa, class: 'btn btn-primary' %>
               <%= link_to 'Editar', edit_tarefa_path(tarefa), class: 'btn btn-warning' %>
               <%= link_to 'Exluir', tarefa, method: :delete, class: 'btn btn-danger' %>
+            </div>
           </div>
         </div>
-      </div>
-  <%end%>
-  </div>
-  
-</div>
+      <%end%>
+    </div>
+    
+    <br /> <br />
 
-<br>
-<div class="col-md-4">
-      <p>
-        <%= link_to 'Nova Tarefa', new_tarefa_path, class: 'btn btn-success btn-lg' %><br>
-      </p>
-</div>
+    <% if @tarefasDone %>
+      <h2>Tarefas Concluidas</h2>
+      <div class="row">
+        <% @tarefasDone.each do |tarefa| %>
+          <div class="col-md-6 col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= tarefa.title %></h5>
+                <strong>Descrição</strong>
+                <p class="card-text"><%= tarefa.body.truncate_words(3) %></p>
+                <strong>Usuário</strong>
+                <p class="card-text"><%= tarefa.user.username %></p>
+                <%= link_to 'Ler', tarefa, class: 'btn btn-primary' %>
+                <%= link_to 'Editar', edit_tarefa_path(tarefa), class: 'btn btn-warning' %>
+                <%= link_to 'Exluir', tarefa, method: :delete, class: 'btn btn-danger' %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</center>
