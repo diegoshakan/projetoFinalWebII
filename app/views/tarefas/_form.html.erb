@@ -1,7 +1,8 @@
+<div class='col-md-6 col-lg-5'>
 <%= form_with(model: tarefa, local: true) do |form| %>
   <% if tarefa.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(tarefa.errors.count, "error") %> prohibited this tarefa from being saved:</h2>
+      <h2><%= pluralize(tarefa.errors.count, "error") %> </h2>
 
       <ul>
       <% tarefa.errors.full_messages.each do |message| %>
@@ -11,22 +12,23 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="field form-group">
+    <%= form.label :Título %>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+  <div class="field form-group">
+    <%= form.label :descrição %>
+    <%= form.text_area :body, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
+  <div class="field form-group">
+    <%= form.label :Data %>
+    <%= form.date_select :date, class: "form-control form-control-sm" %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit name, class:'btn btn-success' %>
   </div>
 <% end %>
+</div>
