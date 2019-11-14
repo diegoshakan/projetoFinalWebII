@@ -1,13 +1,15 @@
 class TarefasController < ApplicationController
-  before_action :set_tarefa, only: [:show, :edit, :update, :destroy]
+  before_action :set_tarefa, only: [:show, :edit, :update, :destroy, :doneTask]
   before_action :authenticate_user!
   # GET /tarefas
   # GET /tarefas.json
   def index
     if current_user.admin?
-      @tarefas = Tarefa.all
+      @tarefas = Tarefa.where(is_done: false)
+      @tarefasDone = Tarefa.where(is_done: true)
     else
-      @tarefas = Tarefa.where(user: current_user)
+      @tarefas = Tarefa.where(user: current_user, is_done: false)
+      @tarefasDone = Tarefa.where(user: current_user, is_done: true)
     end
   end
 
@@ -65,17 +67,33 @@ class TarefasController < ApplicationController
     end
   end
 
+  # GET /tarefas/1
+  def doneTask
+    @tarefa.is_done = true
+    respond_to do |format|
+      if @tarefa.save
+        format.html { redirect_to tarefas_url, notice: 'Tarefa concluida com sucesso.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to tarefas_url, notice: 'Ocoreu um erro.' }
+        format.json { render json: @tarefa.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tarefa
       if current_user.admin?
         @tarefa = Tarefa.find(params[:id])
       else
-        begin
-         @tarefa = Tarefa.where(user: current_user).find(params[:id])
-        rescue Exception
-          redirect_to tarefas_path, notice: 'Esta tarefa não te pertencee'
-        end
+        # begin
+          # @tarefa = Tarefa.where(user: current_user).find(params[:id])
+        # rescue Exception
+        #   redirect_to tarefas_path, notice: 'Esta tarefa não te pertencee'
+        # end
+        # @tarefa = Tarefa.where(id: params[:tarefa_id])
+        @tarefa = Tarefa.find(params[:id])
       end
     end
 
