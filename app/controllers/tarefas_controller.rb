@@ -1,3 +1,9 @@
+
+
+
+
+
+
 class TarefasController < ApplicationController
   before_action :set_tarefa, only: [:show, :edit, :update, :destroy, :doneTask]
   before_action :authenticate_user!
@@ -67,7 +73,7 @@ class TarefasController < ApplicationController
     end
   end
 
-  # GET /tarefas/1
+  # GET /done/1
   def doneTask
     @tarefa.is_done = true
     respond_to do |format|
@@ -87,13 +93,13 @@ class TarefasController < ApplicationController
       if current_user.admin?
         @tarefa = Tarefa.find(params[:id])
       else
-        # begin
-          # @tarefa = Tarefa.where(user: current_user).find(params[:id])
-        # rescue Exception
-        #   redirect_to tarefas_path, notice: 'Esta tarefa não te pertencee'
-        # end
-        # @tarefa = Tarefa.where(id: params[:tarefa_id])
-        @tarefa = Tarefa.find(params[:id])
+        begin
+          @tarefa = Tarefa.where(user: current_user).find(params[:id])
+        rescue Exception
+          redirect_to tarefas_path, notice: 'Esta tarefa não te pertencee'
+        end
+          #@tarefa = Tarefa.where(id: params[:tarefa_id])
+        #@tarefa = Tarefa.find(params[:id])
       end
     end
 

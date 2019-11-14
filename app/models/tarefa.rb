@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 class DatetimeValidator < ActiveModel::Validator
   def validate(record)
       # if record.date == nil

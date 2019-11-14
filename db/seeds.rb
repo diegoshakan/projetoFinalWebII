@@ -14,8 +14,8 @@ user1 = User.create!(email: 'diego@example.com', password: 'changeme', password_
 
 user2 = User.create!(email: 'pol@example.com', password: 'changeme', password_confirmation: 'changeme')
 
-tarefa_user1 = Tarefa.create!(title: 'Projeto Final Web II', body: 'API funcionando', date: Date.current(), user_id: 2)
+tarefa_user1 = Tarefa.create!(title: 'Projeto Final Web II', body: 'API funcionando', date: Date.current(), user_id: 2, is_done: false)
 
-tarefa_user2 = Tarefa.create!(title: 'Concluir Projeto', body: 'Férias chegando', date: Date.current(), user_id: 3, is_done: true)
+tarefa_user2 = Tarefa.create!(title: 'Concluir Projeto', body: 'Férias chegando', date: Date.current(), user_id: 3, is_done: false)
 
-tarefa_done = Tarefa.create!(title: 'Curtir Feriias', body: 'Férias chegando', date: Date.current(), user_id: 3)
+tarefa_done = Tarefa.create!(title: 'Curtir Feriias', body: 'Férias chegando', date: Date.current(), user_id: 3, is_done: false)
