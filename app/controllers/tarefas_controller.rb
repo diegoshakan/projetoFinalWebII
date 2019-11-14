@@ -1,10 +1,14 @@
 class TarefasController < ApplicationController
   before_action :set_tarefa, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!
   # GET /tarefas
   # GET /tarefas.json
   def index
-    @tarefas = Tarefa.all
+    if current_user.admin?
+      @tarefas = Tarefa.all
+    else
+      @tarefas = Tarefa.where(user: current_user)
+    end
   end
 
   # GET /tarefas/1
