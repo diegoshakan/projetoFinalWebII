@@ -68,7 +68,11 @@ class TarefasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tarefa
-      @tarefa = Tarefa.find(params[:id])
+      begin
+         @tarefa = Tarefa.where(user: current_user).find(params[:id])
+      rescue Exception
+        redirect_to tarefas_path, notice: 'Esta tarefa não te pertencee'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
