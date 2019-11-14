@@ -1,10 +1,14 @@
 class TarefasController < ApplicationController
   before_action :set_tarefa, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!
   # GET /tarefas
   # GET /tarefas.json
   def index
-    @tarefas = Tarefa.all
+    if current_user.admin?
+      @tarefas = Tarefa.all
+    else
+      @tarefas = Tarefa.where(user: current_user)
+    end
   end
 
   # GET /tarefas/1
@@ -64,7 +68,11 @@ class TarefasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tarefa
-      @tarefa = Tarefa.find(params[:id])
+      begin
+         @tarefa = Tarefa.where(user: current_user).find(params[:id])
+      rescue Exception
+        redirect_to tarefas_path, notice: 'Esta tarefa não te pertencee'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
