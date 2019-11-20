@@ -11,7 +11,7 @@
     <div class="row">
       <% @tarefas.each do |tarefa| %>
         <div class="col-md-6 col-lg-4">
-          <div class="card">
+          <div class="card border-primary">
             <div class="card-body">
               <h5 class="card-title"><%= tarefa.title %></h5>
               <strong>Descrição</strong>
@@ -35,7 +35,7 @@
       <div class="row">
         <% @tarefasDone.each do |tarefa| %>
           <div class="col-md-6 col-lg-4">
-            <div class="card">
+            <div class="card border-success" >
               <div class="card-body">
                 <h5 class="card-title"><%= tarefa.title %></h5>
                 <strong>Descrição</strong>
