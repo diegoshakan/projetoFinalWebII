@@ -1,9 +1,3 @@
-
-
-
-
-
-
 class TarefasController < ApplicationController
   before_action :set_tarefa, only: [:show, :edit, :update, :destroy, :doneTask]
   before_action :authenticate_user!
