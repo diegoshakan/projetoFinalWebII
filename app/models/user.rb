@@ -12,8 +12,4 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tarefas
-  
-  def username
-    return self.email.split('@')[0].capitalize
-  end
 end
