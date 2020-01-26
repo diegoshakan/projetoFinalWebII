@@ -17,10 +17,11 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  database: myapp_development
+  database: todo_development
   pool: 5
-  username: shakan 
-  password: 1121231234
+  host: localhost
+  username: postgres 
+  password: 
 
 development:
   <<: *default
