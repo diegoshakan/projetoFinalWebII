@@ -12,4 +12,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tarefas
+
+  validates :username, presence: true
 end
