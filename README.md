@@ -1,6 +1,7 @@
 # README
 ![GitHub top language](https://img.shields.io/github/languages/top/diegoshakan/projetoFinalWebII?style=plastic)
 ![GitHub language count](https://img.shields.io/github/languages/count/diegoshakan/projetofinalwebII?style=plastic)
+![GitHub followers](https://img.shields.io/github/followers/diegoshakan?style=social)
 
 App de criação de Tarefas para o Desafio Insight.
 
