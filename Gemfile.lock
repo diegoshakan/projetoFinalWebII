@@ -115,7 +115,9 @@ GEM
     marcel (0.3.3)
       mimemagic (~> 0.3.2)
     method_source (0.9.2)
-    mimemagic (0.3.3)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.1)
     mini_portile2 (2.5.3)
     minitest (5.13.0)
@@ -270,7 +272,7 @@ DEPENDENCIES
   jsonapi-resources
   listen (>= 3.0.5, < 3.2)
   pg (>= 0.18, < 2.0)
-  puma (~> 3.12)
+  puma (~> 4.3)
   rails (~> 5.2.2)
   rspec-rails (~> 3.0)
   sass-rails (~> 5.0)
